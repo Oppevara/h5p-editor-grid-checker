@@ -1,0 +1,21 @@
+{
+  "title": "H5PEditor.GridChecker",
+  "description": "Editor extention for H5P.GridChecker library.",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 0,
+  "author": "Pjotr Savitski",
+  "license": "MIT",
+  "machineName": "H5PEditor.GridChecker",
+  "preloadedJs": [
+    {
+      "path": "scripts/grid-checker.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/grid-checker.css"
+    }
+  ]
+}
