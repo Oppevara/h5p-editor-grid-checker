@@ -182,7 +182,7 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
       'role': 'button',
       'tabindex': '0',
       'aria-disabled': 'false',
-      'text': 'Click to generate grid and mark correct options' // TODO This needs to be translated
+      'text': H5PEditor.t('H5PEditor.GridChecker', 'generateGrid', {})
     }).on('click', function() {
       self.generateGrid();
       $(this).removeClass('changed');
@@ -231,6 +231,12 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
 
   GridChecker.prototype.remove = function() {
     $wrapper.remove();
+  };
+
+  H5PEditor.language['H5PEditor.GridChecker'] = {
+    'libraryStrings': {
+      'generateGrid': 'Click to generate grid and mark correct options'
+    }
   };
 
   return GridChecker;
