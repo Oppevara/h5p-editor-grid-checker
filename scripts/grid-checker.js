@@ -5,7 +5,6 @@
 var H5PEditor = H5PEditor || {};
 
 H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
-  var ROWS_AND_COLUMNS_SELECTOR = '.field.group.field-name-rowsAndColumns';
   var GRID_TABLE_SELECTOR = 'table.h5p-grid-checker.grid';
   var ROW_SELECTOR = '.field.group.field-name-row';
   var ROW_ID_SELECTOR = '.field.field-name-rowId > input[type="text"]';
@@ -127,7 +126,7 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
   GridChecker.prototype.getRows = function() {
     var rows = [];
 
-    this.parent.$form.find(ROW_SELECTOR).each(function() {
+    this.$rowsAndColumnsField.find(ROW_SELECTOR).each(function() {
       var element = $(this);
       rows.push({
         'id': $(this).find(ROW_ID_SELECTOR).val(),
@@ -145,7 +144,7 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
   GridChecker.prototype.getColumns = function() {
     var columns = [];
 
-    this.parent.$form.find(COLUMN_SELECTOR).each(function() {
+    this.$rowsAndColumnsField.find(COLUMN_SELECTOR).each(function() {
       var element = $(this);
       columns.push({
         'id': $(this).find(COLUMN_ID_SELECTOR).val(),
@@ -162,7 +161,7 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
    * @return {void}
    */
   GridChecker.prototype.assignUniqueIdentifiers = function() {
-    this.parent.$form.find(ROWS_AND_COLUMNS_SELECTOR).find(ROW_ID_SELECTOR + ', ' + COLUMN_ID_SELECTOR).filter(function() {
+    this.$rowsAndColumnsField.find(ROW_ID_SELECTOR + ', ' + COLUMN_ID_SELECTOR).filter(function() {
       return !this.value;
     }).each(function() {
       $(this).val(H5P.createUUID()).trigger('change');
@@ -232,8 +231,8 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
       'class': 'field field-name-' + self.field.name + ' h5p-grid-checker group'
     });
 
-    // XXX This should probably ge selected with H5P own methods
-    self.$gridTypeField = self.parent.$form.find('.field.field-name-' + self.field.gridChecker.typeField + '.select > select');
+    self.$gridTypeField = H5PEditor.findField(self.field.gridChecker.typeField, self.parent).$select;
+    self.$rowsAndColumnsField = H5PEditor.findField('rowsAndColumns', self.parent).$group;
 
     self.$generateGridButton = $('<div>', {
       'class': 'h5peditor-button h5peditor-button-textual',
@@ -263,19 +262,19 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
     // Generate identifiers for fields with empty value
     self.assignUniqueIdentifiers();
     // Setup listeners to regerate identifiers as fields get added
-    self.parent.$form.find(ROWS_AND_COLUMNS_SELECTOR + ' .h5peditor-button.h5peditor-button-textual').on('click', function() {
+    self.$rowsAndColumnsField.find('.h5peditor-button.h5peditor-button-textual').on('click', function() {
       self.assignUniqueIdentifiers();
-      self.parent.$form.find(ROWS_AND_COLUMNS_SELECTOR + ' .h5peditor-button')
+      self.$rowsAndColumnsField.find('.h5peditor-button')
         .off('click', baseDataChangedHandler)
         .on('click', baseDataChangedHandler);
-      self.parent.$form.find(ROW_SELECTOR + ' ' + ROW_TEXT_SELECTOR + ', ' + COLUMN_SELECTOR + ' ' + COLUMN_TEXT_SELECTOR)
+      self.$rowsAndColumnsField.find(ROW_SELECTOR + ' ' + ROW_TEXT_SELECTOR + ', ' + COLUMN_SELECTOR + ' ' + COLUMN_TEXT_SELECTOR)
         .off('change', baseDataChangedHandler)
         .on('change', baseDataChangedHandler);
     });
 
-    self.parent.$form.find(ROWS_AND_COLUMNS_SELECTOR + ' .h5peditor-button')
+    self.$rowsAndColumnsField.find('.h5peditor-button')
       .on('click', baseDataChangedHandler);
-    self.parent.$form.find(ROW_SELECTOR + ' ' + ROW_TEXT_SELECTOR + ', ' + COLUMN_SELECTOR + ' ' + COLUMN_TEXT_SELECTOR)
+    self.$rowsAndColumnsField.find(ROW_SELECTOR + ' ' + ROW_TEXT_SELECTOR + ', ' + COLUMN_SELECTOR + ' ' + COLUMN_TEXT_SELECTOR)
       .on('change', baseDataChangedHandler);
 
     if (self.params && self.canGenerateGrid) {

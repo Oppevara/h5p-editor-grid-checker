@@ -1,20 +1,20 @@
-.h5peditor.h5p-gridchecker-editor .field.group.field-name-rowsAndColumns > .content > .field {
+.h5p-gridchecker-editor .field.group.field-name-rowsAndColumns > .content > .field {
   display: inline-block;
   width: 50%;
   vertical-align: top;
   margin: 0 0 0 0;
 }
 
-.h5peditor.h5p-gridchecker-editor .field.group.field-name-rowsAndColumns .field.field-name-rowId, .h5peditor.h5p-gridchecker-editor .field.group.field-name-rowsAndColumns .field.field-name-columnId {
+.h5p-gridchecker-editor .field.group.field-name-rowsAndColumns .field.field-name-rowId, .h5p-gridchecker-editor .field.group.field-name-rowsAndColumns .field.field-name-columnId {
   display: none;
 }
 
-.h5peditor.h5p-gridchecker-editor .h5p-gridchecker-editor-responsive {
+.h5p-gridchecker-editor .h5p-gridchecker-editor-responsive {
   width: 100%;
   overflow-y: auto;
 }
 
-.h5peditor.h5p-gridchecker-editor table.h5p-grid-checker.grid {
+.h5p-gridchecker-editor table.h5p-grid-checker.grid {
   border: 0;
   border-spacing: 0;
   font-size: 0.857em;
@@ -22,29 +22,29 @@
   width: 100%;
 }
 
-.h5peditor.h5p-gridchecker-editor table.h5p-grid-checker.grid tr {
+.h5p-gridchecker-editor table.h5p-grid-checker.grid tr {
   background: #efefef;
   background: rgba(0, 0, 0, 0.063);
 }
 
-.h5peditor.h5p-gridchecker-editor table.h5p-grid-checker.grid tr th {
+.h5p-gridchecker-editor table.h5p-grid-checker.grid tr th {
   color: #ffffff;
   font-weight: bold;
   background: #757575;
   background: rgba(0, 0, 0, 0.51);
 }
 
-.h5peditor.h5p-gridchecker-editor table.h5p-grid-checker.grid tr th,  .h5peditor.h5p-gridchecker-editor table.h5p-grid-checker.grid tr td{
+.h5p-gridchecker-editor table.h5p-grid-checker.grid tr th, .h5p-gridchecker-editor table.h5p-grid-checker.grid tr td{
   padding: 4px 9px;
   border: 1px solid #fff;
   text-align: center;
 }
 
-.h5peditor.h5p-gridchecker-editor .field.field-name-grid.h5p-grid-checker.group {
+.h5p-gridchecker-editor .field.field-name-grid.h5p-grid-checker.group {
   text-align: center;
 }
 
-.h5peditor.h5p-gridchecker-editor .field.field-name-grid.h5p-grid-checker.group > .h5peditor-button.h5peditor-button-textual.changed {
+.h5p-gridchecker-editor .field.field-name-grid.h5p-grid-checker.group > .h5peditor-button.h5peditor-button-textual.changed {
   background: #da0001;
   background-image: linear-gradient(#da0001 50%, transparent 50%, transparent);
 }
