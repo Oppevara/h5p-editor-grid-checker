@@ -5,9 +5,6 @@
 var H5PEditor = H5PEditor || {};
 
 H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
-  // Unique identifier code was taked from here: https://gist.github.com/jed/982883
-  var generateUuid = function b(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,b);};
-
   var ROWS_AND_COLUMNS_SELECTOR = '.field.group.field-name-rowsAndColumns';
   var GRID_TABLE_SELECTOR = 'table.h5p-grid-checker.grid';
   var ROW_SELECTOR = '.field.group.field-name-row';
@@ -168,7 +165,7 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
     this.parent.$form.find(ROWS_AND_COLUMNS_SELECTOR).find(ROW_ID_SELECTOR + ', ' + COLUMN_ID_SELECTOR).filter(function() {
       return !this.value;
     }).each(function() {
-      $(this).val(generateUuid()).trigger('change');
+      $(this).val(H5P.createUUID()).trigger('change');
     });
   };
 
