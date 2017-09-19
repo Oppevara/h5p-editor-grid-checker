@@ -270,12 +270,19 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
       self.$rowsAndColumnsField.find(ROW_SELECTOR + ' ' + ROW_TEXT_SELECTOR + ', ' + COLUMN_SELECTOR + ' ' + COLUMN_TEXT_SELECTOR)
         .off('change', baseDataChangedHandler)
         .on('change', baseDataChangedHandler);
+      self.$rowsAndColumnsField.find('.list-item-title-bar')
+        .children('.h5peditor-label')
+        .off('mousedown', baseDataChangedHandler)
+        .on('mousedown', baseDataChangedHandler);
     });
 
     self.$rowsAndColumnsField.find('.h5peditor-button')
       .on('click', baseDataChangedHandler);
     self.$rowsAndColumnsField.find(ROW_SELECTOR + ' ' + ROW_TEXT_SELECTOR + ', ' + COLUMN_SELECTOR + ' ' + COLUMN_TEXT_SELECTOR)
       .on('change', baseDataChangedHandler);
+    self.$rowsAndColumnsField.find('.list-item-title-bar')
+      .children('.h5peditor-label')
+      .on('mousedown', baseDataChangedHandler);
 
     if (self.params && self.canGenerateGrid) {
       self.generateGrid();
