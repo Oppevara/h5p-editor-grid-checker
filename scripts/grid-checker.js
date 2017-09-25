@@ -169,15 +169,25 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
   };
 
   /**
+   * Returns columns array for a row or an empty array
+   * @param  {object} row Grid row
+   * @return {array}      Columns data
+   */
+  GridChecker.prototype.getGridRowColumns = function(row) {
+      return (row.hasOwnProperty('gridRowColumns') && Array.isArray(row.gridRowColumns)) ? row.gridRowColumns : [];
+  };
+
+  /**
    * Returns a lookup table based on either current values or previously stored ones
    * @return {object} Keyed by row identifiers with arrays of columnsidentifiers
    */
   GridChecker.prototype.getLookup = function() {
+    var self = this;
     var params = this.storedParams ? this.storedParams : this.params;
     var lookup = {};
     if (params && params.length > 0) {
       $.each(params, function(index, element) {
-        lookup[element.gridRowId] = element.gridRowColumns;
+        lookup[element.gridRowId] = self.getGridRowColumns(element);
       });
     }
     return lookup;
