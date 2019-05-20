@@ -319,7 +319,7 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
    * @return {void}
    */
   GridChecker.prototype.remove = function() {
-    $wrapper.remove();
+    this.$container.remove();
   };
 
   // Additional library specific translation stings
