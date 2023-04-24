@@ -72,10 +72,15 @@ H5PEditor.widgets.gridChecker = H5PEditor.GridChecker = (function($) {
           'name': 'grid-row-' + row.id,
           'value': column.id
         };
-        if (gridType === 'single') {
-          inputOptions.type = 'radio';
-        } else if (gridType === 'multiple') {
-          inputOptions.type = 'checkbox';
+        if (['single', 'multiple'].indexOf(gridType) !== -1) {
+          inputOptions.type = gridType === 'single' ? 'radio' : 'checkbox';
+          td
+              .addClass('cursor-pointer')
+              .on('click', function(event) {
+                if (!event.target.type) {
+                  td.find('input').trigger('click');
+                }
+              });
         }
         if ( lookup && lookup.hasOwnProperty(row.id) && lookup[row.id].indexOf(column.id) !== -1) {
           inputOptions.checked = true;

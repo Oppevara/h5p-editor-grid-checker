@@ -48,3 +48,7 @@
   background: #da0001;
   background-image: linear-gradient(#da0001 50%, transparent 50%, transparent);
 }
+
+.h5p-gridchecker-editor .cursor-pointer {
+  cursor: pointer;
+}
